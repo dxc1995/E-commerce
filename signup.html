@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户注册</title>
+    <script src="js/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 350px;
+            height: 433px;
+            margin: 50px auto;
+            color: #fff;
+            background-color: #2196F3;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            box-shadow: 5px 5px 5px #ccc;
+        }
+
+        .header {
+            height: 80px;
+            line-height: 80px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-left: 18px;
+        }
+
+        .form-input {
+            width: 233px;
+            height: 35px;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+
+        .user {
+            margin-left: -15px;
+        }
+
+        label {
+            margin-right: 15px;
+        }
+
+        .form-btn {
+           width: 300px;
+           height: 37px;
+           background-color: #F44336;
+           outline-color: none;
+           color: #fff;
+           border: none;
+           border-radius: 5px;
+           box-shadow:2px 2px 3px #CD8131;
+           cursor: pointer;
+           margin-left: 5px;
+        }
+
+        input.male {
+            margin-left: 46px;
+        }
+
+        input.female {
+           margin-left: 50px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            用户注册
+        </div>
+        <div class="form-group">
+            <form action="" method="POST">
+                <label for="#">用户名:</label>
+                <input type="input" class="form-input user" name="username"><br><br>
+                <label for="#">密码:  </label>
+                <input type="password" class="form-input" name="password"><br><br>
+                <label for="#">邮箱:</label>
+                <input type="input" class="form-input" name="email"><br><br>
+                <!--性别-->
+                <label for="sex">性别：</label>
+                <input type="radio"  name="sex" class="male" value="male">男
+                <input type="radio"  name="sex" class="female" value="female">女 <br><br>
+                <!--城市-->
+                <label for="">城市:</label>
+                <select name="" id="" class="form-input">
+                    <option value="珠海">珠海</option>
+                    <option value="杭州">杭州</option>
+                    <option value="深圳">深圳</option>
+                </select><br><br>
+                <input type="submit" class="form-btn" value="注册">
+            </form>
+        </div>
+    </div>
+    <script>
+        $('form').submit(function() {
+            var 
+                username = $('input[name=username]').val(),
+                password = $('input[name=password]').val(),
+                email    = $('input[name=email]').val(),
+                sex      = $('input[name=sex]:checked').val();
+                city     = $('option:selected').val()
+            
+            if (username.length == 0) {
+                alert("用户名不得为空!");
+                return false;
+            } else if(password.length == 0) {
+                alert("密码不得为空");
+                return false;
+            } else if (password.length < 6) {
+                alert("密码小于6位");
+                return false;
+            } else if (email.indexOf('@') == -1) {
+                alert("邮箱格式有误");
+                return false;
+            } else if(!sex){
+                alert("请选择性别");
+                return false;
+            } else if(!city) {
+                alert("请选择城市");
+                return false;
+            } else {
+                alert("已提交")
+            }
+        })
+    </script>
+</body>
+</html>
